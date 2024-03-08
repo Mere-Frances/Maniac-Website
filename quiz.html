@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="images/">
+    <link rel="stylesheet" href="anim.js">
+    <link rel="icon" href="images/a-pill-3.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maniac</title>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+</head>
+<body>
+
+    <nav class="nav nav2" id="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="fanzone.html">Fan Zone</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+        </ul>
+    </nav>
+
+        
+    <script>
+        // JavaScript to add the scroll-down class on scroll
+        window.addEventListener("scroll", function () {
+          const navbar = document.getElementById("navbar");
+          if (window.scrollY > 50) {
+            navbar.classList.add("scroll-down");
+          } else {
+            navbar.classList.remove("scroll-down");
+          }
+        });
+      </script>
+
+    <section class="quiz_home1">
+        <div class="quiz_homeoverlay">
+            <div class="video_responsive2">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/5NSMBd6Y_J0?" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+        </div>
+    </section>
+
+    <h2 class="quiz_breaker">Try The Quiz</h2>
+
+<section class="test_content">
+    <div class="rainbow">
+        <div class="line one">
+        </div>
+        <div class="line two">
+        </div>
+        <div class="line three">
+        </div>
+        <div class="line four">
+        </div>
+        <div class="line five">
+        </div>
+        <div class="line six">
+        </div>
+        <div class="line seven">
+        </div>
+        <div class="line eight">
+        </div>
+    </div>
+    <img src="images/computer_base.png" class="computer_base" alt="computer background">
+    <div class="quiz_items"></div>
+
+
+        <!--    Quiz Section    -->
+
+        
+        <div class="quiz-container">
+            <div id="container">
+                <!--    Start Section     -->
+                <div id="start">Start Test</div>
+        
+                <!--    Guide Section    -->
+                <div id="guide">
+                    <h2>Test Guide</h2>
+                    <h4>1. Focus on your answers.</h4>
+                    <h4>2. Once You Select Your Answer, It Can't Be Undone.</h4>
+                    <h4>3. You Can't Exit From The Test While It Is In Progress.</h4>
+                    <h4>4. Your Results Will Be Presented Proceeding The Test Completion.</h4>
+                    <div id="button">
+                    <button id="exit">Exit</button>
+                    <button id="continue">Continue</button>
+                    </div>
+                </div>
+            </div>
+        <div id="quiz">
+
+            <!--     Quiz Questions  -->
+
+            <div id="question">
+            <img src="images/" id="questionImage" class="whatdoyousee" alt="quiz images">
+            <h2 id="questionText">Question?</h2>
+            </div>
+
+            <!--       Quiz Choices   -->
+
+            <div id="optionList">
+            <h4 class="answers" id="option1">Option1..</h4>
+            <h4 class="answers" id="option2">Option2..</h4>
+            <h4 class="answers" id="option3">Option3..</h4>
+            <h4 class="answers" id="option4">Option4..</h4>
+            </div>
+
+            <!--  Answers Section-->
+
+            <div id="answersSection">
+            <h3 id="next_question">Next</h3>
+
+
+            </div>
+        </div>
+        <!--   Result Section  -->
+        <div id="result">
+            <i class="fas fa-trophy"></i>
+            <h2 id = h2>You have Completed The Test<br><br>
+            Your results: </h2>
+            <div id = quizResult></div>
+            <button id="quit">Quit Test</button>
+            <button id="startAgain">Start Again</button>
+        </div>
+        
+    </div>
+</section>
+
+<script>
+ let MCQS = [
+  {
+    question: "Select the answer that best describes what you see",
+    choice1: "Bear",
+    choice2: "Lemur",
+    choice3: "Sisters",
+    choice4: "Man",
+    answer: 2
+  },
+  {
+    question: "Select the emotion you expereinced upon viewing the following image",
+    choice1: "Uncomfortable",
+    choice2: "Super Happy",
+    choice3: "Suffocated",
+    choice4: "Togetherness",
+    answer: 2
+  },
+  {
+    question: "Select the emotion you expereinced upon viewing the following image",
+    choice1: "Justice",
+    choice2: "Scared",
+    choice3: "Free",
+    choice4: "Paranoid",
+    answer: 0
+  },
+  {
+  question: "focus you attention as I ask the following question",
+    choice1: "k̩̮̹̒͡s̖̣̺̝̤̝͉̻ͣͮ͞b̺̬̽ͣ͑͋͘s͆̿ͥ҉͔̩̘d̜̪̔͠ḻ̬̺̳ͦ͊͌ͧ͟ͅc͇̤̏͝ ̷̞̞͍̤̼ͩ̓̔" ,
+    choice2: "͍̗̹͙̙̩̔̎̿͊͘ͅC̨̦̘̤͚̤̪͐ͭ̀U̓̍ͬͯ͏͈̭̹̰Ï̫̣̪͕͔͢E̡̥͕̯͇̞͓͔ͫͭ6̦̬̻̥̩͙̯̯̽͑ͤ͜Y̴̳͓͍̤͓̏ͨW̴͉̝̥̹̪̺̘̆ͯ͛ͅ9̩͎̪ͫ͞ ",
+    choice3: "B̸̬̦̻̹͖̻̫͆Ć̸͚̗̝̟̑͑ͅx̧̠͈̯̻͍̪͆ͫ8̛͇̙̠͙̲ͮ̐́̄~̌҉͚̫̠̝̼̳͙̞E̵̪͚̞̻̗̙͊̓̚ͅF̒͏͇ͅG̜̹͎͎͉͓̞̭ͤ̌ͯ̿͟Ǎ̟̥̗̹͡!̼̥̮̭̮̃̄̇̈͟ͅ",
+    choice4: "o̠͍̮͈͊͞K̸̠̟̹̣̤̑͛ͪͧͅJ̝̪͎̮̜̏̕p̛̟̳̩̤̩̗͛̄͐[̬͔̫̬̌͘ạ̢̘̲̘͎͂̇p̜͉̜̽͞k͇̙͔̣̞̋̾̏͘ ",
+    answer: 5
+  },
+];
+
+//Start Button Section
+let startBtn = document.getElementById("start");
+
+// Guide Section
+let guide = document.getElementById("guide");
+let exitBtn = document.getElementById("exit");
+let continueBtn = document.getElementById("continue");
+
+// Quiz section
+let quiz = document.getElementById("quiz");
+
+
+//Question Section
+let questionNum = document.getElementById("questionNo");
+let questionText = document.getElementById("questionText");
+
+//Multiple Choice Options
+let option1 = document.getElementById("option1");
+let option2 = document.getElementById("option2");
+let option3 = document.getElementById("option3");
+let option4 = document.getElementById("option4");
+
+//Correct and Next button
+let totalCorrect = document.getElementById("total_correct");
+let nextQuestion = document.getElementById("next_question");
+
+//Result Section
+let result = document.getElementById("result");
+let scorePoints = document.getElementById("score");
+let quit = document.getElementById("quit");
+let startAgain = document.getElementById("startAgain");
+
+// get all options from h4 tag in optionList
+let option_List = document.querySelectorAll(".answers");
+
+let index = 0;
+
+let interval = 0;
+
+//total score
+let score = 0;
+
+//Store Answers in variable
+let userAnswer = undefined;
+
+let isAccepted = null;
+
+//Start button functionality
+start.addEventListener("click", () => {
+  start.style.display = "none";
+  guide.style.display = "block";
+});
+
+//Exit button functionality
+exitBtn.addEventListener("click", () => {
+  guide.style.display = "none";
+  start.style.display = "block";
+});
+
+//images
+
+let questionImages = [
+    "images/whatdoyousee.jpg", // Image for Question 1
+    "images/family.jpg", // Image for Question 2
+    "images/eagle.jpg", // Image for Question 3
+    "images/finalquestion.jpg", // Image for Question 3
+    // Add more image URLs for additional questions as needed
+];
+
+
+//load Questions
+let loadQuiz = () => {
+  
+  questionImage.src = questionImages[index];
+  questionText.innerText = MCQS[index].question;
+  option1.innerText = MCQS[index].choice1;
+  option2.innerText = MCQS[index].choice2;
+  option3.innerText = MCQS[index].choice3;
+  option4.innerText = MCQS[index].choice4;
+
+  //start timer
+  timer = 0;
+};
+loadQuiz();
+
+//continue button functionality
+continueBtn.addEventListener("click", () => {
+  guide.style.display = "none";
+  quiz.style.display = "block";
+
+  interval = setInterval(countDown, 1000);
+  loadQuiz;
+
+  //remove all active classes when continue button is clicked;
+  option_List.forEach((removeActive) => {
+    removeActive.classList.remove("active");
+  });
+  totalCorrect.innerText = `${(correct = 0)} out of ${MCQS.lenght} 
+  `;
+});
+
+option_List.forEach((options, optionNo) => {
+    
+  options.addEventListener("click", () => {
+    options.classList.add("active");
+    //Check Correct Answer
+    if (optionNo.toString() === MCQS[index].answer.toString() || MCQS[index].answer.toString() === "5") {
+      totalCorrect++;
+      correct++;
+    } else {
+      correct += 0;
+    }
+
+    //stop counter
+    clearInterval(interval);
+
+    //disable all other options when user selects An Option
+    for (i = 0; i <= 3; i++) {
+      option_List[i].classList.add("disabled");
+    }
+    
+  });
+});
+
+nextQuestion.addEventListener("click", () => {
+  if(index != MCQS.length-1){
+    index++;
+    option_List.forEach(options =>{
+      options.classList.remove("active")
+    })
+    //question
+    loadQuiz();
+    
+    //Result
+    totalCorrect.style.display = "block";
+    totalCorrect.innerHTML = `${correct} out of ${MCQS.length}`
+    clearInterval(interval);
+    interval = setInterval(countDown, 1000)
+  }
+  else{
+    index = 0;
+    clearInterval(interval);
+    quiz.style.display="none";
+    result.style.display = "block"
+    option_List.forEach(options =>{
+      options.classList.remove("active")
+    })
+    if(totalCorrect === 4){
+        quizResult.innerText = "Accepted";
+    }else{
+        quizResult.innerText = "Unqualified";
+    }
+  }
+  for(i=0; i< 3 ; i++){
+    option_List[i].classList.remove("disabled")
+  }
+})
+
+
+//quit quiz
+quit.addEventListener("click", ()=>{
+    loadQuiz();
+   start.style.display = "block";
+   result.style.display = "none";
+})
+
+//start quiz again
+startAgain.addEventListener("click", ()=>{
+    loadQuiz();
+   result.style.display = "none";
+   guide.style.display = "block";
+})
+
+</script>
+
+<svg class="themind" xmlns="http://www.w3.org/2000/svg" width="671" height="105" viewBox="0 0 671 105" fill="none">
+    <path d="M90 9H0V0H90V9ZM90 21H0V12H90V21ZM57.75 33H35.25V24H57.75V33ZM57.75 45H35.25V36H57.75V45ZM57.75 57H35.25V48H57.75V57ZM57.75 69H35.25V60H57.75V69ZM57.75 81H35.25V72H57.75V81ZM57.75 93H35.25V84H57.75V93ZM57.75 105H35.25V96H57.75V105Z" fill="#B5B5B5"/>
+    <path d="M189.023 9H166.523V0H189.023V9ZM189.023 21H166.523V12H189.023V21ZM189.023 33H166.523V24H189.023V33ZM189.023 69H166.523V60H189.023V69ZM121.523 9H99.0234V0H121.523V9ZM189.023 45H99.0234V36H189.023V45ZM189.023 81H166.523V72H189.023V81ZM121.523 21H99.0234V12H121.523V21ZM189.023 57H99.0234V48H189.023V57ZM189.023 93H166.523V84H189.023V93ZM121.523 33H99.0234V24H121.523V33ZM189.023 105H166.523V96H189.023V105ZM121.523 69H99.0234V60H121.523V69ZM121.523 81H99.0234V72H121.523V81ZM121.523 93H99.0234V84H121.523V93ZM121.523 105H99.0234V96H121.523V105Z" fill="#B5B5B5"/>
+    <path d="M280.547 9H199.247C201.847 3 206.447 0 213.047 0H280.547V9ZM280.547 21H198.047V15C198.047 14 198.147 13 198.347 12H280.547V21ZM280.547 45H198.047V36H280.547V45ZM280.547 57H198.047V48H280.547V57ZM220.547 33H198.047V24H220.547V33ZM280.547 93H198.347C198.147 92 198.047 91 198.047 90V84H280.547V93ZM220.547 69H198.047V60H220.547V69ZM280.547 105H213.047C206.447 105 201.847 102 199.247 96H280.547V105ZM220.547 81H198.047V72H220.547V81Z" fill="#B5B5B5"/>
+    <path d="M441.1 9H414.25L418.6 0H441.1V9ZM441.1 21H408.4L412.75 12H441.1V21ZM441.1 33H402.55L406.9 24H441.1V33ZM441.1 45H396.7L401.05 36H441.1V45ZM441.1 69H418.6V60H441.1V69ZM441.1 57H418.6V52.5L416.35 57H390.85L395.35 48H441.1V57ZM441.1 81H418.6V72H441.1V81ZM441.1 93H418.6V84H441.1V93ZM353.95 9H327.1V0H349.6L353.95 9ZM415 60L410.65 69H385.15L389.5 60H415ZM441.1 105H418.6V96H441.1V105ZM359.8 21H327.1V12H355.45L359.8 21ZM365.65 33H327.1V24H361.3L365.65 33ZM371.5 45H327.1V36H367.15L371.5 45ZM409.15 72L404.8 81H363.4L359.05 72H409.15ZM383.05 69H357.55L353.2 60H378.7L383.05 69ZM377.35 57H351.85L349.6 52.5V57H327.1V48H372.85L377.35 57ZM403.3 84L398.95 93H369.25L364.9 84H403.3ZM397.45 96L393.1 105H375.1L370.75 96H397.45ZM349.6 69H327.1V60H349.6V69ZM349.6 81H327.1V72H349.6V81ZM349.6 93H327.1V84H349.6V93ZM349.6 105H327.1V96H349.6V105Z" fill="#B5B5B5"/>
+    <path d="M472.646 9H450.146V0H472.646V9ZM472.646 21H450.146V12H472.646V21ZM472.646 33H450.146V24H472.646V33ZM472.646 45H450.146V36H472.646V45ZM472.646 57H450.146V48H472.646V57ZM472.646 69H450.146V60H472.646V69ZM472.646 81H450.146V72H472.646V81ZM472.646 93H450.146V84H472.646V93ZM472.646 105H450.146V96H472.646V105Z" fill="#B5B5B5"/>
+    <path d="M571.641 9H549.141V0H571.641V9ZM571.641 21H549.141V12H571.641V21ZM571.641 33H549.141V24H571.641V33ZM571.641 45H549.141V36H571.641V45ZM571.641 57H549.141V48H571.641V57ZM510.591 9H481.641V0H504.141L510.591 9ZM519.141 21H481.641V12H512.691L519.141 21ZM571.641 69H523.491L517.041 60H547.041L549.141 63V60H571.641V69ZM527.691 33H481.641V24H521.241L527.691 33ZM544.791 57H514.791L508.491 48H538.491L544.791 57ZM571.641 81H532.041L525.591 72H571.641V81ZM536.241 45H506.241L504.141 42V45H481.641V36H529.791L536.241 45ZM571.641 93H540.591L534.141 84H571.641V93ZM571.641 105H549.141L542.691 96H571.641V105ZM504.141 57H481.641V48H504.141V57ZM504.141 69H481.641V60H504.141V69ZM504.141 81H481.641V72H504.141V81ZM504.141 93H481.641V84H504.141V93ZM504.141 105H481.641V96H504.141V105Z" fill="#B5B5B5"/>
+    <path d="M670.664 33H648.164V24H670.664V33ZM669.464 9H580.664V0H655.664C662.264 0 666.864 3 669.464 9ZM670.664 45H648.164V36H670.664V45ZM670.664 21H580.664V12H670.364C670.564 13 670.664 14 670.664 15V21ZM670.664 57H648.164V48H670.664V57ZM670.664 69H648.164V60H670.664V69ZM670.664 81H648.164V72H670.664V81ZM603.164 33H580.664V24H603.164V33ZM603.164 45H580.664V36H603.164V45ZM603.164 57H580.664V48H603.164V57ZM670.664 90C670.664 91 670.564 92 670.364 93H580.664V84H670.664V90ZM603.164 69H580.664V60H603.164V69ZM669.464 96C666.864 102 662.264 105 655.664 105H580.664V96H669.464ZM603.164 81H580.664V72H603.164V81Z" fill="#B5B5B5"/>
+  </svg>
+
+<section class="quiz_page3">
+    <div class="quiz_page3_background">
+        <h2>The Mind Can Be Solved</h2>
+    </div>>
+</section>
+
+<section class="quiz_end">
+    <div class="disk"></div>
+</section>
+
+    <footer>
+        <hr class="lightblue">
+        <hr class="darkblue">
+        <hr class="purple">
+        <div class="footer_block">
+            <h2>MANIAC</h2>
+            <ul>
+              <li><a href="https://www.facebook.com/maniacnetflix/">Facebook</a></li>
+              <li><a href="https://www.netflix.com/maniac/">Netflix</a></li>
+              <li><a href="https://www.instagram.com/maniacnetflix/?hl=en">Instagram</a></li>
+              <li><a href="https://www.reddit.com/r/Maniac/">Reddit</a></li>
+            </ul>
+        </div>
+        <hr class="red">
+        <hr class="orange">
+        <hr class="yellow">
+    </footer>
+
+</body>
+</html>
